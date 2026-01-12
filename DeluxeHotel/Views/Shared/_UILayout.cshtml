@@ -1,0 +1,19 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @await Component.InvokeAsync("_DashboardHeadViewComponent")
+</head>
+<body>
+    @await Component.InvokeAsync("_DashboardNavbarViewComponent")
+    @await Component.InvokeAsync("_DashboardBannerViewComponent")
+    @RenderBody()
+    @await Component.InvokeAsync("_DashboardFooterViewComponent")
+    @await Component.InvokeAsync("_DashboardScriptViewComponent")
+</body>
+</html>
+

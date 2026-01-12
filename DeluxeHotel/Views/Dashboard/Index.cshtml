@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white antialiased transition-colors duration-300">
+    <div class="relative flex min-h-screen w-full flex-col overflow-hidden">
+        <main class="flex-1 p-4 lg:p-6 xl:px-20 xl:py-8 space-y-6 overflow-y-auto no-scrollbar">
+            @await Component.InvokeAsync("_DashboardFinansViewComponent")
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+                @await Component.InvokeAsync("_DashboardOilViewComponent")
+                @await Component.InvokeAsync("_DashboardWeatherViewComponent")
+                @await Component.InvokeAsync("_DashboardTaskViewComponent")
+                @await Component.InvokeAsync("_DashboardMealViewComponent")
+                @await Component.InvokeAsync("_DashboardFilmsViewComponent")
+                @await Component.InvokeAsync("_DashboardRouteViewComponent")
+            </div>
+        </main>
+    </div>
+
+</body>
+
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#359EFF", "background-light": "#f5f7f8", "background-dark": "#0f1923", "card-dark": "#162e25", "card-light": "#ffffff"}, fontFamily: {display: "Manrope"}, borderRadius: {DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px"}}}};</script>
+<style>
+    .glass-panel {
+        background: rgba(22, 46, 37, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.05)
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none
+    }
+
+    .custom-checkbox:checked {
+        background-color: #359EFF;
+        border-color: #359EFF;
+        background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuCSKf0vPsIQu4x0LgdxYTRXkqdk_Npy5UZ_nHXdL2E44ylbsTGXcAQUF-Lp-X3MGkAflDT1mCQRP8FfZ8nX07B9TW2l5-QYBkpFHUaW4wpEbD5wTwkkbRJHLxjPlnpYf5NsO80seddua_o4Q_yg-1eGfZzuXlQUPs9F-cRmHCJHlZeiQ93hhRL9pz30V8c_JidjeYBye7B9BwrR3WL8nq9rkYgAF7-fRjeqNVMKG5dRbqKvy8zRFSvOXAlhWeAlJvOHJP6iWGEs4uE)
+    }</style>

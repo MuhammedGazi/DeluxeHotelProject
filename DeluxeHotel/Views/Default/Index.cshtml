@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<section class="ftco-booking ftco-section ftco-no-pt ftco-no-pb">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-lg-12">
+                <form id="hotelSearchForm" asp-action="GetHotelComponent" asp-controller="Default" method="get"
+                      class="booking-form shadow-lg"
+                      style="background: #fff; border-radius: 8px; margin-top: -30px; position: relative; z-index: 100;">
+                    <div class="row no-gutters">
+                        <div class="col-md-3 d-flex border-right">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap w-100">
+                                    <label for="cityName" style="color: #b99155; font-weight: bold; text-transform: uppercase; font-size: 12px;">Gidilecek Şehir</label>
+                                    <input type="text" name="cityName" class="form-control" placeholder="Örn: Ankara" required
+                                           style="color: #000 !important; border-bottom: 1px solid #ddd !important;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 d-flex border-right">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap w-100">
+                                    <label for="checkIn" style="color: #b99155; font-weight: bold; text-transform: uppercase; font-size: 12px;">Giriş Tarihi</label>
+                                    <input type="date" name="checkIn" class="form-control" required
+                                           style="color: #000 !important; border-bottom: 1px solid #ddd !important;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 d-flex border-right">
+                            <div class="form-group p-4 align-self-stretch d-flex align-items-end">
+                                <div class="wrap w-100">
+                                    <label for="checkOut" style="color: #b99155; font-weight: bold; text-transform: uppercase; font-size: 12px;">Çıkış Tarihi</label>
+                                    <input type="date" name="checkOut" class="form-control" required
+                                           style="color: #000 !important; border-bottom: 1px solid #ddd !important;">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3 d-flex">
+                            <div class="form-group d-flex align-self-stretch w-100 mb-0">
+                                <input type="submit" value="Otelleri Bul"
+                                       class="btn btn-primary py-3 px-4 align-self-stretch w-100"
+                                       style="border-radius: 0 8px 8px 0; font-weight: bold; font-size: 16px;">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="hotelResultsContainer" class="mt-5 pt-5">
+</div>
+
+<script>
+    $(document).ready(function () {
+        $(".booking-form").on("submit", function (e) {
+            e.preventDefault();
+
+            var formData = $(this).serialize();
+
+            $.ajax({
+                url: "/Default/GetHotelComponent?" + formData,
+                type: "GET",
+                success: function (result) {
+                    $("#hotelResultsContainer").html(result);
+                    $('html, body').animate({
+                        scrollTop: $("#hotelResultsContainer").offset().top - 50
+                    }, 500);
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+    .booking-form .form-control {
+        color: #000 !important;
+        background: transparent !important;
+    }
+
+        .booking-form .form-control::placeholder {
+            color: #999 !important;
+        }
+    @@media (max-width: 768px) {
+        .booking-form {
+            margin-top: 20px !important;
+        }
+
+            .booking-form .btn {
+                border-radius: 8px !important;
+            }
+    }
+</style>
