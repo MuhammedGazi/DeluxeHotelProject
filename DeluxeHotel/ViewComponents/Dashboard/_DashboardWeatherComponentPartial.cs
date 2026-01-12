@@ -2,7 +2,7 @@
 
 namespace DeluxeHotel.ViewComponents.Dashboard
 {
-    public class _DashboardOilViewComponent : ViewComponent
+    public class _DashboardWeatherComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

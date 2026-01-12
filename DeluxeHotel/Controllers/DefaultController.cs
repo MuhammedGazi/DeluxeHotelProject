@@ -12,7 +12,7 @@ public class DefaultController : Controller
     public IActionResult GetHotelComponent(string cityName, string checkIn, string checkOut)
     {
         ViewBag.SehirAdi = cityName;
-        return ViewComponent("_DefaultHotelComponent", new { cityName = cityName, checkIn = checkIn, checkOut = checkOut });
+        return ViewComponent("_DefaultHotelComponentPartial", new { cityName = cityName, checkIn = checkIn, checkOut = checkOut });
     }
 }
 

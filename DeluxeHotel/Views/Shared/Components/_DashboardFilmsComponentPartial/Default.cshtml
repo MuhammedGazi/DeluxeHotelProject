@@ -1,0 +1,68 @@
+﻿@model List<ViewFlimDto>
+@*
+    _DashboardFilmsViewComponent
+*@
+
+<div class="glass-panel rounded-2xl p-5 flex flex-col col-span-1">
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-bold flex items-center gap-2">
+            <span class="material-symbols-outlined text-pink-500 text-[26px]">movie</span>
+            Önerilen Filmler
+        </h3>
+        <span class="text-2xl">🎬</span>
+    </div>
+
+    <div class="flex flex-col gap-4 flex-1 overflow-y-auto no-scrollbar" style="max-height: 400px;">
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                @* Hata Çözümü: href niteliğini her zaman render ediyoruz. 
+                   Trailer null ise url'e, o da null ise '#' (boş link) veriyoruz.
+                *@
+                var link = !string.IsNullOrEmpty(item.trailer) ? item.trailer : (!string.IsNullOrEmpty(item.url) ? item.url : "#");
+
+                <a href="@link" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="flex gap-4 group cursor-pointer items-center bg-white/5 p-4 rounded-xl hover:bg-white/10 transition-all hover:scale-[1.02] no-underline border border-transparent hover:border-white/10">
+                    
+                    <div class="w-16 h-20 shrink-0 rounded-lg overflow-hidden relative shadow-lg">
+                        <img alt="@item.originalTitle"
+                             class="w-full h-full object-cover"
+                             src="@(item.thumbnails != null && item.thumbnails.Length > 0 ? item.thumbnails[0].url : "/images/default-movie.jpg")" />
+                    </div>
+
+                    <div class="flex-1 min-w-0">
+                        @* Başlık Yazısı Büyütüldü (text-lg - 18px) *@
+                        <h4 class="text-lg font-bold truncate text-slate-100 group-hover:text-pink-400 transition-colors">
+                            @item.originalTitle
+                        </h4>
+                        
+                        <div class="flex items-center gap-3 mt-2">
+                            @* Alt Yazı Büyütüldü (text-sm - 14px) *@
+                            <span class="text-sm text-slate-400">Sinema / Fragman</span>
+
+                            @if (item.averageRating.HasValue)
+                            {
+                                <span class="bg-yellow-400 text-black text-[12px] font-black px-2 py-0.5 rounded flex items-center gap-1">
+                                    ⭐ @item.averageRating.Value.ToString("0.0")
+                                </span>
+                            }
+                        </div>
+                    </div>
+                    
+                    <span class="material-symbols-outlined text-slate-500 group-hover:text-white text-2xl transition-colors">
+                        play_circle
+                    </span>
+                </a>
+            }
+        }
+        else
+        {
+            <div class="flex flex-col items-center justify-center py-10 opacity-40">
+                <p class="text-lg">Öneriler yükleniyor...</p>
+            </div>
+        }
+    </div>
+</div>

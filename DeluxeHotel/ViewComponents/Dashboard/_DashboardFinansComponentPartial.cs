@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace DeluxeHotel.ViewComponents.Default
+namespace DeluxeHotel.ViewComponents.Dashboard
 {
-    public class _DashboardBannerViewComponent : ViewComponent
+    public class _DashboardFinansComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

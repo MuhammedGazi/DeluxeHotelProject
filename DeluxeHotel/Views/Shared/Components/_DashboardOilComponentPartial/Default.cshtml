@@ -1,0 +1,54 @@
+﻿@model FuelItem
+@*
+    _DashboardOilViewComponent
+*@
+
+<div class="glass-panel rounded-2xl p-6 md:col-span-2 flex flex-col justify-center border border-white/10 shadow-xl">
+    <div class="flex items-center justify-between mb-5">
+        @* Başlık Fontu Büyütüldü (text-xl) *@
+        <h3 class="text-xl font-extrabold flex items-center gap-3">
+            <span class="p-2 bg-red-500/20 text-red-500 rounded-xl material-symbols-outlined text-[24px]">local_gas_station</span>
+            Akaryakıt Fiyatları (@(ViewBag.ilAdı ?? "Türkiye Geneli"))
+        </h3>
+        <span class="text-xs text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-white/5 px-3 py-1.5 rounded-full font-medium">
+            Güncelleme: 12 Ocak 2026
+        </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        @* Benzin Kartı *@
+        <div class="bg-white/5 dark:bg-[#234839]/30 rounded-2xl p-4 border border-slate-100 dark:border-white/5 flex items-center gap-4 hover:bg-white/10 transition-all">
+            <div class="bg-emerald-500/20 text-emerald-500 p-3 rounded-full">
+                <span class="material-symbols-outlined text-[22px]">water_drop</span>
+            </div>
+            <div>
+                @* Etiket Fontu Büyütüldü (text-xs) *@
+                <p class="text-slate-500 dark:text-[#92c9b2] text-xs font-black uppercase tracking-wider">Benzin (95)</p>
+                @* Fiyat Fontu Büyütüldü (text-2xl) *@
+                <p class="text-2xl font-black text-white">@(Model?.Kursunsuz_95_TL_lt ?? "55.26") ₺</p>
+            </div>
+        </div>
+
+        @* Motorin Kartı *@
+        <div class="bg-white/5 dark:bg-[#234839]/30 rounded-2xl p-4 border border-slate-100 dark:border-white/5 flex items-center gap-4 hover:bg-white/10 transition-all">
+            <div class="bg-amber-500/20 text-amber-500 p-3 rounded-full">
+                <span class="material-symbols-outlined text-[22px]">local_shipping</span>
+            </div>
+            <div>
+                <p class="text-slate-500 dark:text-[#92c9b2] text-xs font-black uppercase tracking-wider">Motorin (Dizel)</p>
+                <p class="text-2xl font-black text-white">@(Model?.Motorin_TL_lt ?? "55.95") ₺</p>
+            </div>
+        </div>
+
+        @* LPG Kartı *@
+        <div class="bg-white/5 dark:bg-[#234839]/30 rounded-2xl p-4 border border-slate-100 dark:border-white/5 flex items-center gap-4 hover:bg-white/10 transition-all">
+            <div class="bg-blue-500/20 text-blue-500 p-3 rounded-full">
+                <span class="material-symbols-outlined text-[22px]">propane</span>
+            </div>
+            <div>
+                <p class="text-slate-500 dark:text-[#92c9b2] text-xs font-black uppercase tracking-wider">LPG (Otogaz)</p>
+                <p class="text-2xl font-black text-white">@(Model?.Otogaz_TL_lt ?? "29.74") ₺</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,7 @@
 
 namespace DeluxeHotel.ViewComponents.Default
 {
-    public class _DashboardNavbarViewComponent : ViewComponent
+    public class _DashboardNavbarComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {

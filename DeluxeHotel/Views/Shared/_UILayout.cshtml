@@ -1,19 +1,16 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    @await Component.InvokeAsync("_DashboardHeadViewComponent")
-</head>
+    @await Component.InvokeAsync("_DashboardHeadComponentPartial")
 <body>
-    @await Component.InvokeAsync("_DashboardNavbarViewComponent")
-    @await Component.InvokeAsync("_DashboardBannerViewComponent")
+    @await Component.InvokeAsync("_DashboardNavbarComponentPartial")
+    @await Component.InvokeAsync("_DashboardBannerComponentPartial")
     @RenderBody()
-    @await Component.InvokeAsync("_DashboardFooterViewComponent")
-    @await Component.InvokeAsync("_DashboardScriptViewComponent")
+    @await Component.InvokeAsync("_DashboardFooterComponentPartial")
+    @await Component.InvokeAsync("_DashboardScriptComponentPartial")
 </body>
 </html>
 
