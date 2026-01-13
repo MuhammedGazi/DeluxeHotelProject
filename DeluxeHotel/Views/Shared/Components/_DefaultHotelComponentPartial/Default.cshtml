@@ -1,6 +1,6 @@
 ﻿@model List<DeluxeHotel.DTOs.HotelDto.RequestHotelDto>
 @*
-    _DefaultHotelComponent
+    _DefaultHotelComponentPartial
 *@
 <section class="ftco-section bg-light">
     <div class="container">
@@ -33,7 +33,9 @@
                             </div>
                             <hr>
                             <p class="pt-1">
-                                <a href="#" class="btn-custom">Otel Detaylarını Gör <span class="icon-long-arrow-right"></span></a>
+                                <a href="/Default/HotelDetails/@item.HotelId?checkin=2026-06-10&checkout=2026-06-15" class="btn-custom">
+                                    Otel Detaylarını Gör <span class="icon-long-arrow-right"></span>
+                                </a>
                             </p>
                         </div>
                     </div>

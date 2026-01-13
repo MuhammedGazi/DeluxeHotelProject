@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DeluxeHotel.Services.ApiServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DeluxeHotel.ViewComponents.Dashboard
 {
-    public class _DashboardWeatherComponentPartial : ViewComponent
+    public class _DashboardWeatherComponentPartial(IApiService service) : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(string cityName = "Ankara")
         {
-            return View();
+            var result = await service.GetWeatherAsync(cityName);
+            return View(result);
         }
     }
 }

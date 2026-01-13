@@ -58,43 +58,48 @@
 <div id="hotelResultsContainer" class="mt-5 pt-5">
 </div>
 
-<script>
-    $(document).ready(function () {
-        $(".booking-form").on("submit", function (e) {
-            e.preventDefault();
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $(".booking-form").on("submit", function (e) {
+                e.preventDefault();
 
-            var formData = $(this).serialize();
+                var formData = $(this).serialize();
 
-            $.ajax({
-                url: "/Default/GetHotelComponent?" + formData,
-                type: "GET",
-                success: function (result) {
-                    $("#hotelResultsContainer").html(result);
-                    $('html, body').animate({
-                        scrollTop: $("#hotelResultsContainer").offset().top - 50
-                    }, 500);
-                }
+                $.ajax({
+                    url: "/Default/GetHotelComponent?" + formData,
+                    type: "GET",
+                    success: function (result) {
+                        $("#hotelResultsContainer").html(result);
+                        $('html, body').animate({
+                            scrollTop: $("#hotelResultsContainer").offset().top - 50
+                        }, 500);
+                    }
+                });
             });
         });
-    });
-</script>
+    </script>
+}
 
-<style>
-    .booking-form .form-control {
-        color: #000 !important;
-        background: transparent !important;
-    }
-
-        .booking-form .form-control::placeholder {
-            color: #999 !important;
-        }
-    @@media (max-width: 768px) {
-        .booking-form {
-            margin-top: 20px !important;
+@section Styles {
+    <style>
+        .booking-form .form-control {
+            color: #000 !important;
+            background: transparent !important;
         }
 
-            .booking-form .btn {
-                border-radius: 8px !important;
+            .booking-form .form-control::placeholder {
+                color: #999 !important;
             }
-    }
-</style>
+
+        @@media (max-width: 768px) {
+            .booking-form {
+                margin-top: 20px !important;
+            }
+
+                .booking-form .btn {
+                    border-radius: 8px !important;
+                }
+        }
+    </style>
+}

@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DeluxeHotel.Services.GeminiServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DeluxeHotel.ViewComponents.Dashboard
 {
-    public class _DashboardRouteComponentPartial : ViewComponent
+    public class _DashboardRouteComponentPartial(IGeminiService _service) : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync(string cityName = "Adıyaman")
         {
-            return View();
+            var dynamicHtml = await _service.GetHistoricalRouteHtml(cityName);
+
+            return View("Default", dynamicHtml);
         }
     }
 }

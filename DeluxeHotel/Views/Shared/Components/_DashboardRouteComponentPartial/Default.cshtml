@@ -1,8 +1,18 @@
-﻿
+﻿@model string
 @*
     _DashboardRouteViewComponent
 *@
-<div class="glass-panel rounded-2xl p-5 md:col-span-2 flex flex-col">
+
+@if (!string.IsNullOrEmpty(Model))
+{
+    @Html.Raw(Model)
+}
+else
+{
+    <p>Rota yüklenemedi...</p>
+}
+
+@* <div class="glass-panel rounded-2xl p-5 md:col-span-2 flex flex-col">
     <div class="flex items-center justify-between mb-4">
         <h3 class="text-lg font-bold flex items-center gap-2">
             <span class="material-symbols-outlined text-cyan-400 text-[20px]">map</span>
@@ -58,4 +68,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> *@

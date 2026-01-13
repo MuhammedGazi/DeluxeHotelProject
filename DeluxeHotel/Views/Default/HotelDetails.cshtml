@@ -1,0 +1,89 @@
+﻿@model HotelDetailDataDto
+@{
+    ViewData["Title"] = "HotelDetails";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+    var mainRoom = Model?.Rooms?.Values?.FirstOrDefault();
+}
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="row">
+                    <div class="col-md-12 ftco-animate">
+                        <h2 class="mb-4">@Model?.HotelName</h2>
+                        <div class="single-slider owl-carousel">
+                            @if (mainRoom?.Photos != null)
+                            {
+                                foreach (var photo in mainRoom.Photos)
+                                {
+                                    <div class="item">
+                                        <div class="room-img" style="background-image: url(@photo.Url);"></div>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 room-single mt-4 mb-5 ftco-animate">
+                        <p>@mainRoom?.Description</p>
+                        
+                        <div class="d-md-flex mt-5 mb-5">
+                            <ul class="list">
+                                <li><span>Konum:</span> @Model?.City</li>
+                                <li><span>Adres:</span> @Model?.Address</li>
+                                <li><span>Müsait Oda:</span> @Model?.AvailableRooms</li>
+                            </ul>
+                            <ul class="list ml-md-5">
+                                <li><span>Maks. Kişi:</span> @Model?.MaxRoomsInReservation</li>
+                                <li><span>Değerlendirme:</span> @Model?.ReviewCount Yorum</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 room-single ftco-animate mb-5 mt-4">
+                        <h3 class="mb-4">@Model?.FacilitiesBlock?.Title</h3>
+                        <div class="row">
+                            @if (Model?.FacilitiesBlock?.Facilities != null)
+                            {
+                                foreach (var item in Model.FacilitiesBlock.Facilities)
+                                {
+                                    <div class="col-md-4 mb-3">
+                                        <i class="icon-check text-primary"></i> @item.Name
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 sidebar ftco-animate">
+                <div class="sidebar-box ftco-animate">
+                    <div class="p-4" style="border: 1px solid #e6e6e6; border-radius: 10px;">
+                        <h3 class="text-center">Rezervasyon</h3>
+                        <hr />
+                        <p>Giriş: <b>@Model?.ArrivalDate</b></p>
+                        <p>Çıkış: <b>@Model?.DepartureDate</b></p>
+                        <h2 class="text-primary text-center">@Model?.PriceBreakdown?.TotalAmount?.Value @Model?.PriceBreakdown?.TotalAmount?.Currency</h2>
+                        <p class="text-center text-muted">Gecelik: @Model?.PriceBreakdown?.NightlyAmount?.Value @Model?.PriceBreakdown?.NightlyAmount?.Currency</p>
+                        <button class="btn btn-primary btn-block py-3">Hemen Rezerve Et</button>
+                    </div>
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3>Konuşulan Diller</h3>
+                    <div class="tagcloud">
+                        @if (Model?.SpokenLanguages != null)
+                        {
+                            foreach (var lang in Model.SpokenLanguages)
+                            {
+                                <a href="#" class="tag-cloud-link">@lang.ToUpper()</a>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

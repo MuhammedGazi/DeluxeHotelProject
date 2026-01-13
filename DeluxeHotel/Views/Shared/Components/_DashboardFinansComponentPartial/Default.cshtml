@@ -1,4 +1,4 @@
-﻿
+﻿@model ViewFinanceDto
 @*
     _DashboardFinansViewComponent
 *@
@@ -7,7 +7,7 @@
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider">USD/TRY</p>
-                <h3 class="text-xl font-bold mt-1">32.45 ₺</h3>
+                <h3 class="text-xl font-bold mt-1">@Model.UsdToTry.ToString("0.00") ₺</h3>
             </div>
             <div class="bg-green-500/10 text-green-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
                 <span class="material-symbols-outlined text-[12px]">trending_up</span>
@@ -29,7 +29,7 @@
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider">EUR/TRY</p>
-                <h3 class="text-xl font-bold mt-1">35.12 ₺</h3>
+                <h3 class="text-xl font-bold mt-1">@Model.EurToTry.ToString("0.00") ₺</h3>
             </div>
             <div class="bg-green-500/10 text-green-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
                 <span class="material-symbols-outlined text-[12px]">trending_up</span>
@@ -44,7 +44,7 @@
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider">GBP/TRY</p>
-                <h3 class="text-xl font-bold mt-1">40.90 ₺</h3>
+                <h3 class="text-xl font-bold mt-1">@Model.GbpToTry.ToString("0.00") ₺</h3>
             </div>
             <div class="bg-red-500/10 text-red-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
                 <span class="material-symbols-outlined text-[12px]">trending_down</span>

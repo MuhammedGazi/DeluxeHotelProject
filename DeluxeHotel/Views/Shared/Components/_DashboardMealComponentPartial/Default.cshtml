@@ -1,28 +1,41 @@
-﻿
+﻿@model ViewMealDto
 @*
    _DashboardMealViewComponent
 *@
+
 <div class="glass-panel rounded-2xl p-5 flex flex-col col-span-1">
+    @* Başlık ve Kategori *@
     <div class="flex items-center justify-between mb-3">
         <h3 class="text-lg font-bold flex items-center gap-2">
             <span class="material-symbols-outlined text-orange-500 text-[20px]">restaurant_menu</span>
-            Meal
+            Günün Menüsü
         </h3>
-        <span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded font-bold">AI Pick</span>
+        <span class="bg-primary/20 text-primary text-[10px] px-2 py-0.5 rounded font-bold uppercase">
+            @Model.Category
+        </span>
     </div>
+
     <div class="flex-1 flex flex-col gap-3">
+        @* Yemek Görseli ve Başlık *@
         <div class="relative w-full h-32 rounded-xl overflow-hidden group cursor-pointer shrink-0">
-            <div class="bg-center bg-no-repeat bg-cover w-full h-full transition-transform duration-700 group-hover:scale-110" data-alt="Close up of a delicious Turkish Adana Kebab plate" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwDULHKEt47Hj7nDKVV0aYKI_4sjLm6QAQ9kHB2E2Nytvt_BApgZ_wnDosUPAQoQHUYLbNDVh0uB2i9rhCehhr9g5GTREgJkSTPNRRasF_-p5OG7bK1SAfR0pAocb-S9eeFmERQXuyR22OtmsfzgkH27GXdL1DXnCA52LAXah1N0p7rpPg_ZEyA8_Nx0yR6danSChLv8UsRcy1MWiDhuCmUaKcETOiq3k9FXHgXj18JY0rdo1fSDxbTbWrPgxLXtWs5OuG7wkw3tk");'></div>
+            <div class="bg-center bg-no-repeat bg-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
+                 style='background-image: url("@Model.Image");'>
+            </div>
             <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
-                <h4 class="text-white font-bold text-sm">Adana Kebap 🌶️</h4>
+                <h4 class="text-white font-bold text-sm">@Model.Title</h4>
+                <p class="text-[10px] text-slate-300">@Model.Area Mutfağı</p>
             </div>
         </div>
-        <p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-3">
-            Spicy minced meat kebab grilled on charcoal. Best with charred peppers.
+
+        @* Tarif Özeti (İlk 3 Satır) *@
+        <p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-6">
+            @Model.Instructions
         </p>
+
+        @* Buton *@
         <button class="mt-auto w-full bg-primary hover:bg-emerald-400 text-slate-900 font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-2 transition-colors text-xs">
             <span class="material-symbols-outlined text-[16px]">receipt_long</span>
-            Recipe
+            Tarifi İncele
         </button>
     </div>
 </div>

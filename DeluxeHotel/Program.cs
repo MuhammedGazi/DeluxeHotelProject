@@ -1,9 +1,14 @@
 using DeluxeHotel.Context;
+using DeluxeHotel.Services.ApiServices;
+using DeluxeHotel.Services.GeminiServices;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient<IApiService, ApiService>();
+builder.Services.AddHttpClient();
+builder.Services.AddScoped<IGeminiService, GeminiService>();
 builder.Services.AddDbContext<AppDbContext>(opt =>
 {
     opt.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));

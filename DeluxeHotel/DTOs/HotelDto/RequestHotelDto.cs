@@ -7,5 +7,6 @@
         public float Rating { get; set; }
         public string Price { get; set; }
         public string RatingWord { get; set; }
+        public int HotelId { get; set; }
     }
 }

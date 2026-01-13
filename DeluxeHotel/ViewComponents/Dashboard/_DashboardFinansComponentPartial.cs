@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DeluxeHotel.Services.ApiServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DeluxeHotel.ViewComponents.Dashboard
 {
-    public class _DashboardFinansComponentPartial : ViewComponent
+    public class _DashboardFinansComponentPartial(IApiService service) : ViewComponent
     {
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View();
+            var result = await service.GetFinanceAsync();
+            return View(result);
         }
     }
 }

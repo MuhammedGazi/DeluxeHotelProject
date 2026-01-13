@@ -4,13 +4,17 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>
     @await Component.InvokeAsync("_DashboardHeadComponentPartial")
+    @await RenderSectionAsync("Styles", required: false)
+</head>
 <body>
     @await Component.InvokeAsync("_DashboardNavbarComponentPartial")
     @await Component.InvokeAsync("_DashboardBannerComponentPartial")
     @RenderBody()
     @await Component.InvokeAsync("_DashboardFooterComponentPartial")
-    @await Component.InvokeAsync("_DashboardScriptComponentPartial")
+    @await Component.InvokeAsync("_DashboardScriptComponentPartial") 
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
 
