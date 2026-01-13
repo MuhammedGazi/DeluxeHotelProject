@@ -14,6 +14,7 @@ namespace DeluxeHotel.Services.ApiServices
         Task<HotelDetailDataDto?> GetHotelDetailAsync(int hotelId, string checkin, string checkout);
         Task<ViewMealDto> GetMealAsync();
         Task<ViewFinanceDto> GetFinanceAsync();
+        Task<ViewCoinDto> GetCoinAsync();
         Task<FuelItem> GetOilAsync(string city = "Ankara");
         Task<ResultWeatherDto> GetWeatherAsync(string cityName = "Ankara");
     }

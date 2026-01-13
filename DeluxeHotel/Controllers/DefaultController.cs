@@ -20,6 +20,7 @@ public class DefaultController(IApiService service) : Controller
 
     public IActionResult GetHotelComponent(string cityName, string checkIn, string checkOut)
     {
+        HttpContext.Session.SetString("SelectedCity", cityName);
         ViewBag.SehirAdi = cityName;
         return ViewComponent("_DefaultHotelComponentPartial", new { cityName = cityName, checkIn = checkIn, checkOut = checkOut });
     }

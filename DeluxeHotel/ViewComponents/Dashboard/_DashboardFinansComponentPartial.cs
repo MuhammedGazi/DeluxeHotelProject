@@ -1,4 +1,5 @@
-﻿using DeluxeHotel.Services.ApiServices;
+﻿using DeluxeHotel.DTOs.FinanceDto;
+using DeluxeHotel.Services.ApiServices;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeluxeHotel.ViewComponents.Dashboard
@@ -7,8 +8,21 @@ namespace DeluxeHotel.ViewComponents.Dashboard
     {
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var result = await service.GetFinanceAsync();
-            return View(result);
+            var financeTask = service.GetFinanceAsync();
+            var coinTask = service.GetCoinAsync();
+
+            await Task.WhenAll(financeTask, coinTask);
+
+            var financeResult = await financeTask;
+            var coinResult = await coinTask;
+
+            var dto = new ResultViewDto()
+            {
+                FinanceDto = financeResult,
+                CoinDto = coinResult
+            };
+
+            return View(dto);
         }
     }
 }

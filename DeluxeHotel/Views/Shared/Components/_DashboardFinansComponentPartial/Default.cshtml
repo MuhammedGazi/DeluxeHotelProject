@@ -1,65 +1,59 @@
-﻿@model ViewFinanceDto
+﻿@using System.Globalization
+@model ResultViewDto
 @*
     _DashboardFinansViewComponent
 *@
+@{
+    var btcPrice = decimal.Parse(Model.CoinDto.BTCToTry, CultureInfo.InvariantCulture);
+    var ethPrice = decimal.Parse(Model.CoinDto.ETHToTry, CultureInfo.InvariantCulture);
+    var bnbPrice = decimal.Parse(Model.CoinDto.BNBToTry, CultureInfo.InvariantCulture);
+    var trCulture = new CultureInfo("tr-TR");
+}
+
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+    
     <div class="glass-panel p-4 rounded-2xl flex flex-col justify-between h-28 hover:translate-y-[-2px] transition-transform duration-300 shadow-lg dark:shadow-none">
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider">USD/TRY</p>
-                <h3 class="text-xl font-bold mt-1">@Model.UsdToTry.ToString("0.00") ₺</h3>
+                <h3 class="text-xl font-bold mt-1">@Model.FinanceDto.UsdToTry.ToString("N2", trCulture) ₺</h3>
             </div>
             <div class="bg-green-500/10 text-green-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
-                <span class="material-symbols-outlined text-[12px]">trending_up</span>
-                0.4%
+                <span class="material-symbols-outlined text-[12px]">trending_up</span> 0.4%
             </div>
         </div>
-        <svg class="w-full h-8 text-green-500" fill="none" preserveAspectRatio="none" viewBox="0 0 100 25">
-            <path d="M0 20 C 10 20, 15 10, 25 15 C 35 20, 40 5, 50 10 C 60 15, 65 5, 75 10 C 85 15, 90 2, 100 5" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
-            <defs>
-                <linearGradient id="gradient-green" x1="0" x2="0" y1="0" y2="1">
-                    <stop offset="0%" stop-color="currentColor" stop-opacity="0.2"></stop>
-                    <stop offset="100%" stop-color="currentColor" stop-opacity="0"></stop>
-                </linearGradient>
-            </defs>
-            <path class="text-green-500" d="M0 20 C 10 20, 15 10, 25 15 C 35 20, 40 5, 50 10 C 60 15, 65 5, 75 10 C 85 15, 90 2, 100 5 V 25 H 0 Z" fill="url(#gradient-green)"></path>
-        </svg>
+        @* Buradaki SVG grafikleri tasarımına göre aynı kalabilir *@
     </div>
+
     <div class="glass-panel p-4 rounded-2xl flex flex-col justify-between h-28 hover:translate-y-[-2px] transition-transform duration-300 shadow-lg dark:shadow-none">
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider">EUR/TRY</p>
-                <h3 class="text-xl font-bold mt-1">@Model.EurToTry.ToString("0.00") ₺</h3>
+                <h3 class="text-xl font-bold mt-1">@Model.FinanceDto.EurToTry.ToString("N2", trCulture) ₺</h3>
             </div>
             <div class="bg-green-500/10 text-green-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
-                <span class="material-symbols-outlined text-[12px]">trending_up</span>
-                0.1%
+                <span class="material-symbols-outlined text-[12px]">trending_up</span> 0.1%
             </div>
         </div>
-        <svg class="w-full h-8 text-green-500" fill="none" preserveAspectRatio="none" viewBox="0 0 100 25">
-            <path d="M0 15 C 20 18, 40 10, 60 12 C 80 14, 90 5, 100 2" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
-        </svg>
     </div>
+
     <div class="glass-panel p-4 rounded-2xl flex flex-col justify-between h-28 hover:translate-y-[-2px] transition-transform duration-300 shadow-lg dark:shadow-none">
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider">GBP/TRY</p>
-                <h3 class="text-xl font-bold mt-1">@Model.GbpToTry.ToString("0.00") ₺</h3>
+                <h3 class="text-xl font-bold mt-1">@Model.FinanceDto.GbpToTry.ToString("N2", trCulture) ₺</h3>
             </div>
             <div class="bg-red-500/10 text-red-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
-                <span class="material-symbols-outlined text-[12px]">trending_down</span>
-                -0.2%
+                <span class="material-symbols-outlined text-[12px]">trending_down</span> -0.2%
             </div>
         </div>
-        <svg class="w-full h-8 text-red-500" fill="none" preserveAspectRatio="none" viewBox="0 0 100 25">
-            <path d="M0 5 C 15 5, 30 15, 45 12 C 60 9, 75 20, 100 22" stroke="currentColor" stroke-width="2" vector-effect="non-scaling-stroke"></path>
-        </svg>
     </div>
+
     <div class="glass-panel p-4 rounded-2xl flex flex-col justify-between h-28 border-l-4 border-l-orange-500 hover:translate-y-[-2px] transition-transform duration-300 shadow-lg dark:shadow-none">
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">BTC <span class="text-orange-500">💰</span></p>
-                <h3 class="text-lg font-bold mt-1">$63,250</h3>
+                <h3 class="text-lg font-bold mt-1">@btcPrice.ToString("N2", trCulture) $</h3>
             </div>
             <div class="bg-green-500/10 text-green-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
                 +2.5%
@@ -69,11 +63,12 @@
             <div class="h-full bg-orange-500 w-[75%]"></div>
         </div>
     </div>
+
     <div class="glass-panel p-4 rounded-2xl flex flex-col justify-between h-28 border-l-4 border-l-purple-500 hover:translate-y-[-2px] transition-transform duration-300 shadow-lg dark:shadow-none">
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">ETH <span class="text-purple-500">💎</span></p>
-                <h3 class="text-lg font-bold mt-1">$3,310</h3>
+                <h3 class="text-lg font-bold mt-1">@ethPrice.ToString("N2", trCulture) $</h3>
             </div>
             <div class="bg-green-500/10 text-green-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
                 +1.8%
@@ -83,11 +78,12 @@
             <div class="h-full bg-purple-500 w-[60%]"></div>
         </div>
     </div>
+
     <div class="glass-panel p-4 rounded-2xl flex flex-col justify-between h-28 border-l-4 border-l-yellow-400 hover:translate-y-[-2px] transition-transform duration-300 shadow-lg dark:shadow-none">
         <div class="flex justify-between items-start">
             <div>
                 <p class="text-slate-500 dark:text-[#92c9b2] text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">BNB <span class="text-yellow-400">🔶</span></p>
-                <h3 class="text-lg font-bold mt-1">$595</h3>
+                <h3 class="text-lg font-bold mt-1">@bnbPrice.ToString("N2", trCulture) $</h3>
             </div>
             <div class="bg-red-500/10 text-red-500 rounded-lg px-1.5 py-0.5 text-[10px] font-bold flex items-center gap-1">
                 -0.5%

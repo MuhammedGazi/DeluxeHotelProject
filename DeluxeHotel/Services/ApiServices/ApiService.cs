@@ -18,12 +18,14 @@ namespace DeluxeHotel.Services.ApiServices
         private readonly string _weatherKey;
         private readonly string _hotelKey;
         private readonly string _financeKey;
+        private readonly string _coinKey;
         public ApiService(IConfiguration configuration, HttpClient client)
         {
             _filmKey = configuration["RapidApiKeys:FilmsKey"];
             _weatherKey = configuration["RapidApiKeys:WeatherKey"];
             _hotelKey = configuration["RapidApiKeys:HotelKey"];
             _financeKey = configuration["RapidApiKeys:FinanceKey"];
+            _coinKey = configuration["RapidApiKeys:CoinKey"];
             _client = client;
         }
         public async Task<List<ViewFlimDto>> GetFlimAsync()
@@ -253,6 +255,36 @@ namespace DeluxeHotel.Services.ApiServices
                     EurToTry = 1 / responseJson.Rates["EUR"],
                     GbpToTry = 1 / responseJson.Rates["GBP"],
                     LastUpdate = responseJson.LastUpdateUtc
+                };
+            }
+            return result;
+        }
+
+        public async Task<ViewCoinDto> GetCoinAsync()
+        {
+            ViewCoinDto result;
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://coinranking1.p.rapidapi.com/coins?referenceCurrencyUuid=yhjMzLPhuIDl&timePeriod=24h&orderBy=marketCap&orderDirection=desc&limit=50&offset=0"),
+                Headers =
+                {
+                    { "x-rapidapi-key", "019156258emsh10fb03ae6a920a0p13ff2cjsnfd330298dfcd" },
+                    { "x-rapidapi-host", "coinranking1.p.rapidapi.com" },
+                },
+            };
+            using (var response = await _client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                var jsonresult = System.Text.Json.JsonSerializer.Deserialize<DeluxeHotel.DTOs.FinanceDto.Rootobject>(body);
+                result = new ViewCoinDto
+                {
+                    ETHToTry = jsonresult.data.coins.FirstOrDefault(c => c.symbol == "ETH")?.price,
+
+                    BNBToTry = jsonresult.data.coins.FirstOrDefault(c => c.symbol == "BNB")?.price,
+
+                    BTCToTry = jsonresult.data.coins.FirstOrDefault(c => c.symbol == "BTC")?.price
                 };
             }
             return result;

@@ -2,8 +2,6 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_UILayout.cshtml";
 }
-
-
 <div class="relative flex min-h-screen w-full flex-col overflow-hidden">
     <main class="flex-1 p-4 lg:p-6 xl:px-20 xl:py-8 space-y-6 overflow-y-auto no-scrollbar">
         @await Component.InvokeAsync("_DashboardFinansComponentPartial")
@@ -21,15 +19,26 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#359EFF", "background-light": "#f5f7f8", "background-dark": "#0f1923", "card-dark": "#162e25", "card-light": "#ffffff"}, fontFamily: {display: "Manrope"}, borderRadius: {DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px"}}}};</script>
+<script id="tailwind-config">tailwind.config =
+    {darkMode: "class", theme: {extend: colors: {
+                    primary: "#359EFF",
+                    "background-dark": "#0B0F1A",
+                    "card-dark": "#111827",
+                    "emerald-500": "#10B981"
+                }, fontFamily: {display: "Manrope"}, borderRadius: {DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px"}}}};</script>
 <style>
     .glass-panel {
-        background: rgba(22, 46, 37, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.05)
+        background: rgb(18, 131, 132);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     }
 
+    h3, p, span {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+    }
     .no-scrollbar::-webkit-scrollbar {
         display: none
     }

@@ -1,35 +1,102 @@
-﻿
-@*
-    _DashboardTaskViewComponent
+﻿@* _DashboardTaskViewComponent 
+    Senaryo: Müşteri tamamlamadığı görevleri kendi WhatsApp numarasına liste olarak gönderir.
 *@
-<div class="glass-panel rounded-2xl p-5 flex flex-col col-span-1">
-    <div class="flex items-center justify-between mb-3">
-        <h3 class="text-lg font-bold flex items-center gap-2">
-            <span class="material-symbols-outlined text-green-500 text-[20px]">check_circle</span>
-            Tasks
+
+<div class="glass-panel rounded-2xl p-5 flex flex-col col-span-1 shadow-xl border border-white/10">
+    <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-bold flex items-center gap-2 dark:text-white">
+            <span class="material-symbols-outlined text-emerald-500 text-[24px]">task_alt</span>
+            Görev Takip Listem
         </h3>
-        <span class="text-xl">✅</span>
+        <span class="text-xs bg-emerald-500/20 text-emerald-500 px-2 py-1 rounded-full font-bold">Müşteri Paneli</span>
     </div>
+
     <div class="flex-1 flex flex-col">
-        <div class="relative mb-3">
-            <input class="w-full bg-slate-50 dark:bg-[#234839]/30 border-0 rounded-lg px-3 py-2 pr-8 text-xs focus:ring-1 focus:ring-primary dark:text-white dark:placeholder:text-slate-500" placeholder="Add task..." type="text" />
-            <button class="absolute right-1 top-1/2 -translate-y-1/2 p-1 rounded-md bg-primary text-slate-900 hover:bg-emerald-400 transition-colors">
-                <span class="material-symbols-outlined text-[16px] block">add</span>
-            </button>
+        <div class="mb-4">
+            <label class="text-[10px] font-extrabold text-slate-500 uppercase ml-1 mb-1 block">WhatsApp Numaranız</label>
+            <div class="relative">
+                <input id="customerPhone"
+                       class="w-full bg-slate-100 dark:bg-[#1a3a2e] border-0 rounded-xl px-4 py-3 pr-10 text-sm focus:ring-2 focus:ring-emerald-500 dark:text-white transition-all shadow-inner"
+                       placeholder="5xx xxx xx xx"
+                       type="tel" />
+                <span class="absolute right-3 top-1/2 -translate-y-1/2 text-emerald-500 material-symbols-outlined text-[20px]">whatsapp</span>
+            </div>
         </div>
-        <div class="space-y-2 overflow-y-auto max-h-[160px] pr-1 no-scrollbar">
-            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-[#234839]/30 hover:bg-slate-100 dark:hover:bg-[#234839]/50 transition-colors cursor-pointer group">
-                <input class="custom-checkbox w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-0 cursor-pointer" type="checkbox" />
-                <span class="text-xs font-medium text-slate-700 dark:text-slate-300 decoration-slate-500 group-has-[:checked]:line-through group-has-[:checked]:text-slate-500">Buy groceries</span>
+
+        <div id="customerTaskList" class="space-y-3 overflow-y-auto max-h-[200px] pr-2 mb-4 no-scrollbar">
+
+            <label class="task-item flex items-center gap-3 p-3 rounded-xl bg-white/50 dark:bg-[#234839]/20 border border-slate-200 dark:border-white/5 hover:bg-white dark:hover:bg-[#234839]/40 transition-all cursor-pointer group shadow-sm">
+                <input class="custom-checkbox w-5 h-5 rounded-md border-slate-300 dark:border-slate-600 text-emerald-500 focus:ring-0 cursor-pointer" type="checkbox" />
+                <span class="task-text text-sm font-semibold text-slate-700 dark:text-slate-200 group-has-[:checked]:line-through group-has-[:checked]:text-slate-400">Otel Giriş İşlemleri</span>
             </label>
-            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-[#234839]/30 hover:bg-slate-100 dark:hover:bg-[#234839]/50 transition-colors cursor-pointer group">
-                <input checked="" class="custom-checkbox w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-0 cursor-pointer" type="checkbox" />
-                <span class="text-xs font-medium text-slate-700 dark:text-slate-300 decoration-slate-500 group-has-[:checked]:line-through group-has-[:checked]:text-slate-500">Pay bills</span>
+
+            <label class="task-item flex items-center gap-3 p-3 rounded-xl bg-white/50 dark:bg-[#234839]/20 border border-slate-200 dark:border-white/5 hover:bg-white dark:hover:bg-[#234839]/40 transition-all cursor-pointer group shadow-sm">
+                <input class="custom-checkbox w-5 h-5 rounded-md border-slate-300 dark:border-slate-600 text-emerald-500 focus:ring-0 cursor-pointer" type="checkbox" />
+                <span class="task-text text-sm font-semibold text-slate-700 dark:text-slate-200 group-has-[:checked]:line-through group-has-[:checked]:text-slate-400">Kahvaltı Rezervasyonu</span>
             </label>
-            <label class="flex items-center gap-2 p-2 rounded-lg bg-slate-50 dark:bg-[#234839]/30 hover:bg-slate-100 dark:hover:bg-[#234839]/50 transition-colors cursor-pointer group">
-                <input class="custom-checkbox w-4 h-4 rounded border-slate-300 dark:border-slate-600 text-primary focus:ring-0 cursor-pointer" type="checkbox" />
-                <span class="text-xs font-medium text-slate-700 dark:text-slate-300 decoration-slate-500 group-has-[:checked]:line-through group-has-[:checked]:text-slate-500">Call Mom</span>
+
+            <label class="task-item flex items-center gap-3 p-3 rounded-xl bg-white/50 dark:bg-[#234839]/20 border border-slate-200 dark:border-white/5 hover:bg-white dark:hover:bg-[#234839]/40 transition-all cursor-pointer group shadow-sm">
+                <input class="custom-checkbox w-5 h-5 rounded-md border-slate-300 dark:border-slate-600 text-emerald-500 focus:ring-0 cursor-pointer" type="checkbox" />
+                <span class="task-text text-sm font-semibold text-slate-700 dark:text-slate-200 group-has-[:checked]:line-through group-has-[:checked]:text-slate-400">Spa Randevusu</span>
             </label>
+
+            <label class="task-item flex items-center gap-3 p-3 rounded-xl bg-white/50 dark:bg-[#234839]/20 border border-slate-200 dark:border-white/5 hover:bg-white dark:hover:bg-[#234839]/40 transition-all cursor-pointer group shadow-sm">
+                <input class="custom-checkbox w-5 h-5 rounded-md border-slate-300 dark:border-slate-600 text-emerald-500 focus:ring-0 cursor-pointer" type="checkbox" />
+                <span class="task-text text-sm font-semibold text-slate-700 dark:text-slate-200 group-has-[:checked]:line-through group-has-[:checked]:text-slate-400">Ödeme Kontrolü</span>
+            </label>
+
         </div>
+
+        <button onclick="processAndSendToWhatsapp()"
+                class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/20 active:scale-95">
+            <span class="material-symbols-outlined">send_and_archive</span>
+            EKSİKLERİ TELEFONUMA GÖNDER
+        </button>
     </div>
 </div>
+
+<script>
+    function processAndSendToWhatsapp() {
+        // 1. Numarayı al ve temizle
+        const phoneRaw = document.getElementById("customerPhone").value;
+        let phone = phoneRaw.replace(/\D/g, '');
+
+        if (phone.length < 10) {
+            alert("Lütfen geçerli bir numara giriniz!");
+            return;
+        }
+
+        // Türkiye formatı düzeltme (5xx ise 90 ekle)
+        if (phone.length === 10 && phone.startsWith('5')) {
+            phone = '90' + phone;
+        }
+
+        // 2. Yapılacakları (unchecked) filtrele
+        const taskItems = document.querySelectorAll('.task-item');
+        let uncompleted = [];
+
+        taskItems.forEach(item => {
+            const isChecked = item.querySelector('input[type="checkbox"]').checked;
+            const taskName = item.querySelector('.task-text').innerText;
+
+            if (!isChecked) {
+                uncompleted.push("📌 " + taskName);
+            }
+        });
+
+        // 3. Mesaj içeriği oluşturma
+        if (uncompleted.length === 0) {
+            alert("Harika! Tüm işlemlerinizi tamamlamışsınız. 😊");
+            return;
+        }
+
+        const header = "*Deluxe Hotel Bilgi Sistemi*%0a------------------------------%0aMerhaba, henüz tamamlamadığınız işlemleriniz aşağıdadır:%0a%0a";
+        const list = uncompleted.join('%0a');
+        const footer = "%0a%0a------------------------------%0a_Keyifli bir konaklama dileriz._";
+
+        const finalMessage = header + list + footer;
+
+        // 4. WhatsApp yönlendirmesi
+        window.open(`https://wa.me/${phone}?text=${finalMessage}`, '_blank');
+    }
+</script>
