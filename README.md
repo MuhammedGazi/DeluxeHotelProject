@@ -84,7 +84,6 @@ Bu projede kullanılan teknoloji yığını ve kütüphaneler:
 | **Backend** | ![.NET](https://img.shields.io/badge/ASP.NET%20Core-512BD4?style=flat-square&logo=dotnet&logoColor=white) | Güçlü ve ölçeklenebilir altyapı |
 | **Dil** | ![C#](https://img.shields.io/badge/C%23-239120?style=flat-square&logo=c-sharp&logoColor=white) | Modern C# özellikleri |
 | **AI** | ![Gemini](https://img.shields.io/badge/Google%20Gemini-4285F4?style=flat-square&logo=google&logoColor=white) | Generative AI Servisi |
-| **Veritabanı** | ![MSSQL](https://img.shields.io/badge/SQL%20Server-CC2927?style=flat-square&logo=microsoft-sql-server&logoColor=white) | İlişkisel veritabanı yönetimi |
 | **Frontend** | ![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat-square&logo=bootstrap&logoColor=white) | Responsive tasarım |
 | **API** | ![REST](https://img.shields.io/badge/REST%20API-005571?style=flat-square&logo=postman&logoColor=white) | JSON tabanlı veri iletişimi |
 
