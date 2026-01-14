@@ -1,5 +1,5 @@
 ﻿@* _DashboardTaskViewComponent 
-    Senaryo: Müşteri tamamlamadığı görevleri kendi WhatsApp numarasına liste olarak gönderir.
+    Müşteri tamamlamadığı görevleri kendi WhatsApp numarasına liste olarak gönderir.
 *@
 
 <div class="glass-panel rounded-2xl p-5 flex flex-col col-span-1 shadow-xl border border-white/10">
@@ -57,7 +57,6 @@
 
 <script>
     function processAndSendToWhatsapp() {
-        // 1. Numarayı al ve temizle
         const phoneRaw = document.getElementById("customerPhone").value;
         let phone = phoneRaw.replace(/\D/g, '');
 
@@ -66,12 +65,10 @@
             return;
         }
 
-        // Türkiye formatı düzeltme (5xx ise 90 ekle)
         if (phone.length === 10 && phone.startsWith('5')) {
             phone = '90' + phone;
         }
 
-        // 2. Yapılacakları (unchecked) filtrele
         const taskItems = document.querySelectorAll('.task-item');
         let uncompleted = [];
 
@@ -84,7 +81,6 @@
             }
         });
 
-        // 3. Mesaj içeriği oluşturma
         if (uncompleted.length === 0) {
             alert("Harika! Tüm işlemlerinizi tamamlamışsınız. 😊");
             return;
@@ -96,7 +92,6 @@
 
         const finalMessage = header + list + footer;
 
-        // 4. WhatsApp yönlendirmesi
         window.open(`https://wa.me/${phone}?text=${finalMessage}`, '_blank');
     }
 </script>

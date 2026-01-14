@@ -4,7 +4,6 @@
 *@
 
 <div class="glass-panel rounded-2xl p-5 flex flex-col col-span-1">
-    @* Başlık ve Kategori *@
     <div class="flex items-center justify-between mb-3">
         <h3 class="text-lg font-bold flex items-center gap-2">
             <span class="material-symbols-outlined text-orange-500 text-[20px]">restaurant_menu</span>
@@ -16,7 +15,6 @@
     </div>
 
     <div class="flex-1 flex flex-col gap-3">
-        @* Yemek Görseli ve Başlık *@
         <div class="relative w-full h-32 rounded-xl overflow-hidden group cursor-pointer shrink-0">
             <div class="bg-center bg-no-repeat bg-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
                  style='background-image: url("@Model.Image");'>
@@ -27,12 +25,10 @@
             </div>
         </div>
 
-        @* Tarif Özeti (İlk 3 Satır) *@
         <p class="text-xs text-slate-600 dark:text-slate-300 line-clamp-6">
             @Model.Instructions
         </p>
 
-        @* Buton *@
         <button class="mt-auto w-full bg-primary hover:bg-emerald-400 text-slate-900 font-bold py-2 px-3 rounded-lg flex items-center justify-center gap-2 transition-colors text-xs">
             <span class="material-symbols-outlined text-[16px]">receipt_long</span>
             Tarifi İncele

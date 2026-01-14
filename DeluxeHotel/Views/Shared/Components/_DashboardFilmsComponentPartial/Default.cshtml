@@ -17,9 +17,6 @@
         {
             @foreach (var item in Model)
             {
-                @* Hata Çözümü: href niteliğini her zaman render ediyoruz. 
-                   Trailer null ise url'e, o da null ise '#' (boş link) veriyoruz.
-                *@
                 var link = !string.IsNullOrEmpty(item.trailer) ? item.trailer : (!string.IsNullOrEmpty(item.url) ? item.url : "#");
 
                 <a href="@link" 
@@ -34,13 +31,11 @@
                     </div>
 
                     <div class="flex-1 min-w-0">
-                        @* Başlık Yazısı Büyütüldü (text-lg - 18px) *@
                         <h4 class="text-lg font-bold truncate text-slate-100 group-hover:text-pink-400 transition-colors">
                             @item.originalTitle
                         </h4>
                         
                         <div class="flex items-center gap-3 mt-2">
-                            @* Alt Yazı Büyütüldü (text-sm - 14px) *@
                             <span class="text-sm text-slate-400">Sinema / Fragman</span>
 
                             @if (item.averageRating.HasValue)
